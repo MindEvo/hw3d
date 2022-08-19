@@ -1,6 +1,6 @@
 #pragma once
-
 #include "CustomWin.h"
+
 
 class Window 
 {
