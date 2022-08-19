@@ -1,6 +1,6 @@
 #pragma once
 
-#include <CustomWin.h>
+#include "CustomWin.h"
 
 class Window 
 {
@@ -24,7 +24,7 @@ public:
 	Window(int width, int height, const char* name) noexcept;
 	~Window();
 	Window(const Window&) = delete;
-	Window& operator=(const Window&);
+	Window& operator=(const Window&) = delete;
 private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
