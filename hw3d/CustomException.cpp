@@ -16,6 +16,11 @@ const char* CustomException::what() const noexcept
 	return whatBuffer.c_str();
 }
 
+const char* CustomException::GetType() const noexcept
+{
+	return "Custom Exception";
+}
+
 int CustomException::GetLine() const noexcept
 {
 	return line;
@@ -31,4 +36,5 @@ std::string CustomException::GetOriginString() const noexcept
 	std::ostringstream oss;
 	oss << "[File] " << file << '\n'
 		<< "[Line] " << line;
+	return oss.str();
 }

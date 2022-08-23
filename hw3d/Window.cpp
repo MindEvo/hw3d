@@ -107,7 +107,7 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
 
 // Window Exception stuff
 
-Window::Exception::Exception(int line, const char* file, HRESULT hr)
+Window::Exception::Exception(int line, const char* file, HRESULT hr) noexcept
 	:
 	CustomException(line, file),
 	hr(hr)
