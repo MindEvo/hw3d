@@ -47,3 +47,6 @@ private:
 	int height;
 	HWND hWnd;
 };
+
+// error exception helper macro
+#define CWND_EXCEPT(hr) Window::Exception(__LINE__, __FILE__, hr)

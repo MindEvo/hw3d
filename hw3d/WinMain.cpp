@@ -6,19 +6,35 @@ int CALLBACK WinMain(
 	LPSTR		lpCmdLine,
 	int			nCmdShow) 
 {
-	Window wnd(800, 300, "The Box");
+	try {
+		Window wnd(800, 300, "The Box");
 
-	MSG msg;
-	BOOL gResult;
+		MSG msg;
+		BOOL gResult;
 
-	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0) {
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
+		while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0) {
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+
+		if (gResult == -1) {
+			return -1;
+		}
+
+		//wParam here is the value passed to PostQuitMessage
+		return msg.wParam;
 	}
-
-	if (gResult == -1) {
-		return -1;
+	catch(const CustomException& e) 
+	{
+		MessageBox(nullptr, e.what(), e.GetType(), MB_OK | MB_ICONEXCLAMATION);
 	}
-	
-	return msg.wParam;
+	catch(const std::exception& e)
+	{
+		MessageBox(nullptr, e.what(), "Standard Exception", MB_OK | MB_ICONEXCLAMATION);
+	}
+	catch (...)
+	{
+		MessageBox(nullptr, "No details available", "Unknown Exception", MB_OK | MB_ICONEXCLAMATION);
+	}
+	return -1;
 }
